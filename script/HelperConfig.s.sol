@@ -9,14 +9,14 @@ import {LinkToken} from "../test/mocks/LinkToken.sol";
 contract HelperConfig is Script {
     uint256 subId =
         111660964082621931635013845681919161914960938769201491057353820779771043574085;
-    uint64 subIdToUse = uint64(subId);
+    uint256 subIdToUse = uint256(subId);
 
     struct NetworkConfig {
         uint256 entranceFee;
         uint256 interval;
         address vrfCoordinator;
         bytes32 gasLane;
-        uint64 subscriptionId;
+        uint256 subscriptionId;
         uint32 callbackGasLimit;
         address link;
         uint256 deployerKey;

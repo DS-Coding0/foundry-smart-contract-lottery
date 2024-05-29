@@ -7,7 +7,7 @@ import {Raffle} from "../../src/Raffle.sol";
 import {Test, console} from "forge-std/Test.sol";
 import {HelperConfig} from "../../script/HelperConfig.s.sol";
 import {Vm} from "forge-std/Vm.sol";
-import {VRFCoordinatorV2Mock} from "lib/chainlink-brownie-contracts/contracts/src/v0.8/mocks/VRFCoordinatorV2Mock.sol";
+import {VRFCoordinatorV2_5Mock} from "lib/chainlink-brownie-contracts/contracts/src/v0.8/vrf/mocks/VRFCoordinatorV2_5Mock.sol";
 
 contract RaffleTest is Test {
     /* Events */
@@ -20,7 +20,7 @@ contract RaffleTest is Test {
     uint256 interval;
     address vrfCoordinator;
     bytes32 gasLane;
-    uint64 subscriptionId;
+    uint256 subscriptionId;
     uint32 callbackGasLimit;
     address link;
 
@@ -184,7 +184,7 @@ contract RaffleTest is Test {
     ) public raffleEnteredAndTimePassed {
         // Arrange
         vm.expectRevert("nonexistent request");
-        VRFCoordinatorV2Mock(vrfCoordinator).fulfillRandomWords(
+        VRFCoordinatorV2_5Mock(vrfCoordinator).fulfillRandomWords(
             randomRequestId,
             address(raffle)
         );
@@ -217,7 +217,7 @@ contract RaffleTest is Test {
         uint256 previousTimestamp = raffle.getLastTimestamp();
 
         // pretend to be chainlink vrf to get random number & pick winner
-        VRFCoordinatorV2Mock(vrfCoordinator).fulfillRandomWords(
+        VRFCoordinatorV2_5Mock(vrfCoordinator).fulfillRandomWords(
             uint256(requestId),
             address(raffle)
         );
