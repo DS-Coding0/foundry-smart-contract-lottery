@@ -38,10 +38,29 @@ contract RaffleTest is Test {
             subscriptionId,
             callbackGasLimit,
             link,
+            // deployerKey
 
         ) = helperConfig.activeNetworkConfig();
         vm.deal(PLAYER, STARTING_USER_BALANCE);
     }
+
+    // function setUp() external {
+    //     DeployRaffle deployer = new DeployRaffle();
+    //     (raffle, helperConfig) = deployer.run();
+
+    //     (
+    //         ,
+    //         gasLane,
+    //         automationUpdateInterval,
+    //         raffleEntranceFee,
+    //         callbackGasLimit,
+    //         vrfCoordinatorV2, // link
+    //         // deployerKey
+    //         ,
+
+    //     ) = helperConfig.activeNetworkConfig();
+    //     vm.deal(PLAYER, STARTING_USER_BALANCE);
+    // }
 
     function testRaffleInitializedInOpenState() public view {
         assert(raffle.getRaffleState() == Raffle.RaffleState.OPEN);

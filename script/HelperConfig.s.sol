@@ -9,7 +9,6 @@ import {LinkToken} from "../test/mocks/LinkToken.sol";
 contract HelperConfig is Script {
     uint256 subId =
         111660964082621931635013845681919161914960938769201491057353820779771043574085;
-    uint256 subIdToUse = uint256(subId);
 
     struct NetworkConfig {
         uint256 entranceFee;
@@ -42,7 +41,7 @@ contract HelperConfig is Script {
                 interval: 30,
                 vrfCoordinator: 0x8103B0A8A00be2DDC778e6e7eaa21791Cd364625,
                 gasLane: 0x474e34a077df58807dbe9c96d3c009b23b3c6d0cce433e59bbf5b34f823bc56c,
-                subscriptionId: subIdToUse, // Update this with our subId!
+                subscriptionId: subId, // Update this with our subId!
                 callbackGasLimit: 500000, // 500,000 gas!
                 link: 0x779877A7B0D9E8603169DdbD7836e478b4624789,
                 deployerKey: vm.envUint("PRIVATE_KEY")
